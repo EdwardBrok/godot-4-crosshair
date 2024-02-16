@@ -1,0 +1,281 @@
+[gd_scene load_steps=12 format=3 uid="uid://comtajfyh27qd"]
+
+[ext_resource type="Script" path="res://addons/crosshair.gd" id="1_jvsgo"]
+[ext_resource type="Texture2D" uid="uid://c16shx6y0slws" path="res://addons/marker-res/marker_hit.png" id="2_qx485"]
+[ext_resource type="Texture2D" uid="uid://b1s0mcfoebfpk" path="res://addons/marker-res/marker_kill.png" id="3_0xhe5"]
+[ext_resource type="AudioStream" uid="uid://cm1w8vwfijlqg" path="res://addons/marker-res/marker_hit.ogg" id="4_fd73j"]
+[ext_resource type="AudioStream" uid="uid://b7dbijwuvb7xu" path="res://addons/marker-res/marker_kill.ogg" id="5_bdy5b"]
+
+[sub_resource type="Animation" id="Animation_w2y2f"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitHandler/MarkerHit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitHandler/MarkerHit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KillHandler/MarkerKill:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KillHandler/MarkerKill:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dhkl4"]
+resource_name = "hit"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitHandler/MarkerHit:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0596982),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitHandler/MarkerHit:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_fd73j")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nb8u4"]
+_data = {
+"RESET": SubResource("Animation_w2y2f"),
+"hit": SubResource("Animation_dhkl4")
+}
+
+[sub_resource type="Animation" id="Animation_idugo"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitHandler/MarkerHit:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitHandler/MarkerHit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KillHandler/MarkerKill:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KillHandler/MarkerKill:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s2wfq"]
+resource_name = "kill"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KillHandler/MarkerKill:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.2, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KillHandler/MarkerKill:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KillSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_bdy5b")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ftso"]
+_data = {
+"RESET": SubResource("Animation_idugo"),
+"kill": SubResource("Animation_s2wfq")
+}
+
+[node name="Crosshair" type="Node2D"]
+script = ExtResource("1_jvsgo")
+
+[node name="LinesHandler" type="Node2D" parent="."]
+
+[node name="LeftLine" type="ColorRect" parent="LinesHandler"]
+offset_left = -70.0
+offset_top = -5.0
+offset_right = -20.0
+offset_bottom = 5.0
+color = Color(0, 0.580392, 0.996078, 1)
+
+[node name="RightLine" type="ColorRect" parent="LinesHandler"]
+offset_left = 20.0
+offset_top = -5.0
+offset_right = 70.0
+offset_bottom = 5.0
+color = Color(0, 0.580392, 0.996078, 1)
+
+[node name="TopLine" type="ColorRect" parent="LinesHandler"]
+offset_left = -5.0
+offset_top = -70.0
+offset_right = 5.0
+offset_bottom = -20.0
+color = Color(0, 0.580392, 0.996078, 1)
+
+[node name="BottomLine" type="ColorRect" parent="LinesHandler"]
+offset_left = -5.0
+offset_top = 20.0
+offset_right = 5.0
+offset_bottom = 70.0
+color = Color(0, 0.580392, 0.996078, 1)
+
+[node name="DotHandler" type="Node2D" parent="."]
+
+[node name="Dot" type="ColorRect" parent="DotHandler"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0, 0.580392, 0.996078, 1)
+
+[node name="HitHandler" type="Node2D" parent="."]
+
+[node name="MarkerHit" type="Sprite2D" parent="HitHandler"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_qx485")
+
+[node name="KillHandler" type="Node2D" parent="."]
+
+[node name="MarkerKill" type="Sprite2D" parent="KillHandler"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_0xhe5")
+
+[node name="HitPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nb8u4")
+}
+
+[node name="KillPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ftso")
+}
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+
+[node name="KillSound" type="AudioStreamPlayer" parent="."]

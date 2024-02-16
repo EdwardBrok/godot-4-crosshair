@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkoxhrvnpkjtd"]
+
+[ext_resource type="PackedScene" uid="uid://comtajfyh27qd" path="res://addons/crosshair.tscn" id="1_w3ayq"]
+
+[sub_resource type="GDScript" id="GDScript_a7bcy"]
+script/source = "extends CanvasLayer
+
+@onready var tap_count : int = 0
+@onready var crosshair = $Control/Crosshair
+# Called when the node enters the scene tree for the first time.
+func _input(event):
+	if event is InputEventScreenTouch:
+		tap_count += 1
+		if tap_count > 5:
+			crosshair.killed()
+			tap_count = 0
+			return
+			
+		crosshair.got_hit()
+	
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig1td"]
+font_size = 40
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = SubResource("GDScript_a7bcy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" parent="Control" instance=ExtResource("1_w3ayq")]
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Tap for play animation for success hit and kill"
+label_settings = SubResource("LabelSettings_ig1td")
