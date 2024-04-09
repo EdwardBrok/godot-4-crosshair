@@ -112,8 +112,8 @@ func update_lines_length(length, distance) -> void:
 	# Updating lines' position and distance at the same time.
 	update_lines_distance(distance)
 
-func got_hit() -> void:
+func on_hit() -> void:
 	$HitPlayer.play("hit")
 
-func killed() -> void:
+func on_kill() -> void:
 	$KillPlayer.play("kill")
